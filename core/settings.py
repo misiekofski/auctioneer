@@ -4,9 +4,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "ounsdguoafbdgiosuabf235d9g7bsdtsdgt"
 
-DEBUG = os.environ.get("DEBUG") != "False"
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -77,17 +77,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
-
 DATABASES = {
-     'default': {
-         'ENGINE': "django.db.backends.postgresql",
-         'NAME': os.environ.get("DB_NAME"),
-         "USER": os.environ.get("DB_USER"),
-         "PASSWORD": os.environ.get("DB_PASSWORD"),
-         "HOST": os.environ.get("DB_HOST"),
-         "PORT": os.environ.get("DB_PORT"),
-     }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "charity",
+    }
 }
+# DATABASES = {
+#      'default': {
+#          'ENGINE': "django.db.backends.postgresql",
+#          'NAME': os.environ.get("DB_NAME"),
+#          "USER": os.environ.get("DB_USER"),
+#          "PASSWORD": os.environ.get("DB_PASSWORD"),
+#          "HOST": os.environ.get("DB_HOST"),
+#          "PORT": os.environ.get("DB_PORT"),
+#      }
+# }
 
 
 # Password validation
@@ -178,15 +183,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
 }
 
-# cloudinary config
-CLOUDINARY = {
-    'cloud_name': os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    'api_key': os.environ.get("CLOUDINARY_API_KEY"),
-    'api_secret': os.environ.get("CLOUDINARY_API_SECRET"),
-    "secure": True
-}
-
-DEFAULT_FILE_STORAGE = "cloudvault.cloud_storage.CloudinaryStorage"
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #SECURE_SSL_REDIRECT = True
